@@ -1,0 +1,31 @@
+
+
+/* Variables */
+:root {
+    --informatiq-default-header-width: 75px;
+    --informatiq-default-header-height: 44px;
+}
+
+.header {
+    @apply flex flex-col w-full min-w-0;
+    height: var(--informatiq-default-header-height);
+
+    &-wrapper {
+        box-shadow: 2px 4px 16px rgba(var(--color-black), 0.4);
+        @apply relative flex items-center w-full bg-primary-1 pr-1 z-[300] dark:bg-primary-4 print:hidden;
+        height: var(--informatiq-default-header-height);
+    }
+
+    &-left {
+        @apply flex items-center h-full;
+    }
+
+    &-right {
+        @apply flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2;
+    }
+
+    .drawer-toggle-button-wrapper {
+        @apply flex justify-center items-center h-full bg-primary-7/10 mr-[24px] dark:bg-primary-2/40;
+        width: var(--informatiq-default-header-width);
+    }
+}

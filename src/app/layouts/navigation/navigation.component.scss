@@ -1,0 +1,262 @@
+/* Variables */
+:root {
+    --navigation-width: 240px;
+    --navigation-minimized-width: 75px;
+    --navigation-top-space: 44px;
+    --navigation-footer-height: 90px;
+}
+
+app-navigation {
+    background: linear-gradient(98.54deg, rgb(var(--color-primary-3)) 0%, rgb(var(--color-white)) 100%);
+    box-shadow: 2px 4px 16px rgba(var(--color-black), 0.4);
+    @apply sticky flex flex-col bg-primary-1 text-current;
+    flex: 1 0 auto;
+    top: var(--navigation-top-space);
+    width: var(--navigation-width);
+    min-width: var(--navigation-width);
+    max-width: var(--navigation-width);
+    height: calc(100vh - var(--navigation-top-space));
+    min-height: calc(100vh - var(--navigation-top-space));
+    max-height: calc(100vh - var(--navigation-top-space));
+    z-index: 200;
+
+    /* Left position */
+    &.navigation-position-left {
+        
+        /* Side mode */
+        &.navigation-mode-side {
+            margin-left: calc(#{var(--navigation-width)} * -1);
+
+            &.navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        /* Over mode */
+        &.navigation-mode-over {
+            left: 0;
+            transform: translate3d(-100%, 0, 0);
+
+            &.navigation-opened {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        /* Wrapper */
+        .navigation-wrapper {
+            left: 0;
+        }
+    }
+
+    /* Wrapper */
+    .navigation-wrapper {
+        position: absolute;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        padding-top: 15px;
+        overflow: hidden;
+        z-index: 10;
+        background: inherit;
+        box-shadow: inset -1px 0 0 var(--informatiq-border);
+
+        /* Header */
+        .navigation-header {
+
+        }
+
+        /* Content */
+        .navigation-content {
+            flex: 1 1 auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+
+            /* Divider */
+            > divider-item {
+                margin: 24px 0;
+            }
+
+            /* Group */
+            > group-item {
+                margin-top: 24px;
+            }
+        }
+
+        /* Footer */
+        .navigation-footer {
+
+        }
+    }
+
+    /* ----------------------------------------------------------------------------------------------------- */
+    /* @ Navigation Items
+    /* ----------------------------------------------------------------------------------------------------- */
+
+    /* Navigation items common */
+    .basic-item {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        user-select: none;
+
+        &.item-wrapper {
+
+            .item {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 10px 16px;
+                font-size: 13px;
+                font-weight: 500;
+                line-height: 20px;
+                text-decoration: none;
+                border-radius: 6px;
+
+                /* Disabled state */
+                &.item-disabled {
+                    cursor: default;
+                    opacity: 0.4;
+                }
+
+                .item-icon {
+                    margin-right: 16px;
+                }
+
+                .item-title-wrapper {
+
+                    .item-subtitle {
+                        font-size: 11px;
+                        line-height: 1.5;
+                    }
+                }
+
+                .item-badge {
+                    margin-left: auto;
+
+                    .item-badge-content {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 10px;
+                        font-weight: 600;
+                        white-space: nowrap;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Aside, Basic, Collapsable, Group */
+    .basic-item.item-wrapper {
+         margin: 0 12px;
+    }
+
+    /* Aside, Basic, Collapsable */
+    .basic-item {
+        margin-bottom: 4px;
+
+        .item {
+            cursor: pointer;
+        }
+    }
+
+    &.footer-links {
+        @apply pt-2 bg-transparent bg-none shadow-none;
+        height: var(--navigation-footer-height);
+        min-height: var(--navigation-footer-height);
+        max-height: var(--navigation-footer-height);
+    }
+
+    &.drawer-nav {
+        @apply bg-transparent bg-none shadow-none;
+    }
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* @ Navigation Items Colors
+/* ----------------------------------------------------------------------------------------------------- */
+
+/* Navigation items common */
+.basic-item {
+
+    &.item-wrapper {
+
+        .item {
+            color: currentColor;
+
+            .item-icon {
+                @apply text-current opacity-60;
+            }
+
+            .item-title-wrapper {
+
+                .item-title {
+                    @apply text-current opacity-80;
+                }
+
+                .item-subtitle {
+                    @apply text-current opacity-50;
+                }
+            }
+        }
+    }
+}
+
+/* Aside, Basic, Collapsable */
+.basic-item {
+
+    &.item-wrapper {
+
+        .item {
+
+            /* Active state */
+            &:not(.item-disabled) {
+
+                &.item-active,
+                &.item-active-forced {
+                    @apply bg-gray-800 bg-opacity-5 dark:bg-white dark:bg-opacity-10;
+
+                    .item-icon {
+                        @apply opacity-100;
+                    }
+
+                    .item-title {
+                        @apply opacity-100;
+                    }
+
+                    .item-subtitle {
+                        @apply opacity-100;
+                    }
+                }
+            }
+
+            /* Hover state */
+            &:not(.item-active-forced):not(.item-active):not(.item-disabled) {
+
+                &:hover {
+                    @apply bg-gray-800 bg-opacity-5 dark:bg-white dark:bg-opacity-10;
+
+                    .item-icon {
+                        @apply opacity-100;
+                    }
+
+                    .item-title,
+                    .item-arrow {
+                        @apply opacity-100;
+                    }
+
+                    .item-subtitle {
+                        @apply opacity-100;
+                    }
+                }
+            }
+        }
+    }
+}

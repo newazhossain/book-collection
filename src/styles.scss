@@ -1,4 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        // Primary colors for light theme
+        --color-primary-1: 233, 238, 243;   /* #E9EEF3 */
+        --color-primary-2: 218, 227, 232;   /* #DAE3E8 */
+        --color-primary-3: 198, 209, 220;   /* #C6D1DC */
+        --color-primary-4: 190, 205, 221;   /* #BECDDD */
+        --color-primary-5: 190, 204, 211;   /* #BECCD3 */
+        --color-primary-6: 161, 180, 198;   /* #A1B4C6 */
+        --color-primary-7: 77, 139, 184;    /* #4D8BB8 */
+
+        // Other colors
+        --color-white: 255, 255, 255;       /* #FFFFFF */
+        --color-black: 0, 0, 0;             /* #000000 */
+        --color-secondary-1: 77, 139, 184;  /* #4D8BB8 (Primary button background) */
+        --color-secondary-2: 97, 175, 231;  /* #61AFE7 (Primary button border) */
+        --color-purple-1: 174, 84, 205;     /* #AE54CD */
+        --color-purple-2: 147, 57, 178;     /* #9339B2 */
+        --color-red-1: 235, 65, 93;         /* #EB415D */
+        --color-red-2: 182, 38, 62;         /* #B6263E */
+        --color-orange-1: 224, 112, 49;     /* #E07031 */
+        --color-orange-2: 195, 77, 27;      /* #C34D1B */
+        --color-yellow-1: 251, 196, 56;     /* #FBC438 */
+        --color-yellow-2: 215, 154, 37;     /* #D79A25 */
+        --color-green-1: 82, 203, 153;      /* #52CB99 */
+        --color-green-2: 42, 160, 112;      /* #2AA070 */
+    }
+}
+
+.dark {
+    // Primary colors for dark theme
+    --color-primary-1: 209, 213, 219; /* #d1d5db */
+    --color-primary-2: 80, 98, 118;   /* #506276 (Input background) */
+    --color-primary-3: 50, 63, 77;    /* #323F4D (Background) */
+    --color-primary-4: 46, 57, 68;    /* #2E3944 (Secondary background) */
+    --color-primary-5: 40, 49, 59;    /* #28313B (Primary background) */
+    --color-primary-6: 36, 44, 52;    /* #242C34 (Background) */
+    --color-primary-7: 30, 36, 43;    /* #1E242B (Background) */
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 100%;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+body {
+    @apply text-black;
+
+    &.dark {
+        @apply text-white;
+    }
+}
