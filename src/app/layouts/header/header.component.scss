@@ -15,13 +15,17 @@
         @apply relative flex items-center w-full bg-primary-1 pr-1 z-[300] dark:bg-primary-4 print:hidden;
         height: var(--informatiq-default-header-height);
     }
-
+    
     &-left {
         @apply flex items-center h-full;
     }
 
+    &-middle {
+        @apply flex items-center justify-center h-full;
+    }
+
     &-right {
-        @apply flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2;
+        @apply flex items-center ml-auto pr-4;
     }
 
     .drawer-toggle-button-wrapper {

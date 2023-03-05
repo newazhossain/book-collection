@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { SyncfusionDashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
     declarations: [
     ],
     imports: [
+        SyncfusionDashboardModule
     ],
     providers: []
 })

@@ -6,9 +6,47 @@
     --navigation-footer-height: 90px;
 }
 
+
+// Gradient styles
+.gradient-style {
+    &-1 {
+        background: linear-gradient(98.54deg, rgb(var(--color-primary-3)) 0%, rgb(var(--color-white)) 100%);
+    }
+}
+
+// Shadow styles
+.shadow-style {
+    &-1 {
+        box-shadow: 2px 4px 16px rgba(var(--color-black), 0.4);
+    }
+
+    &-2 {
+        box-shadow: inset 4px 4px 8px rgba(var(--color-black), 0.25);
+    }
+}
+
+.dark {
+    // Gradient styles
+    .gradient-style {
+        &-1 {
+            background: linear-gradient(177deg, rgb(var(--color-primary-6)) 0%, rgb(var(--color-primary-3)) 100%);
+        }
+    }
+
+    // Shadow styles
+    .shadow-style {
+        &-1 {
+            box-shadow: 4px 4px 22px rgba(var(--color-black), 0.4);
+        }
+
+        &-2 {
+            box-shadow: inset 4px 4px 8px rgba(var(--color-black), 0.25);
+        }
+    }
+}
+
 app-navigation {
-    background: linear-gradient(98.54deg, rgb(var(--color-primary-3)) 0%, rgb(var(--color-white)) 100%);
-    box-shadow: 2px 4px 16px rgba(var(--color-black), 0.4);
+    @extend #{'.gradient-style-1', '.shadow-style-1'};
     @apply sticky flex flex-col bg-primary-1 text-current;
     flex: 1 0 auto;
     top: var(--navigation-top-space);
